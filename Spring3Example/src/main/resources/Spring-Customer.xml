@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+	<context:component-scan base-package="com.mkyong.core"/>
+	
+	<bean id="customerBo" class="com.mkyong.customer.bo.impl.CustomerBoImpl" />
+
+	<!-- Aspect -->
+	<bean id="logAspect" class="com.mkyong.aspect.LoggingAspect" />
+	
+	<bean id="eddie"
+      class="com.springinaction.springidol.Instrumentalist">
+    <property name="instrument">
+      <bean class="com.springinaction.springidol.Guitar" />
+    </property>
+  </bean>
+  
+    <!--<start id="audience_bean" />--> 
+  <bean id="aroundAudience" 
+      class="com.springinaction.springidol.AroundAudience" />
+  <!--<end id="audience_bean" />-->
+  
+  <bean id="volunteer" 
+      class="com.springinaction.springidol.Volunteer" />
+  <bean id="magician" 
+      class="com.springinaction.springidol.Magician" /> 
+      
+<!--   <bean id="app" class="com.mkyong.core.App" />  -->
+       
+
+</beans>
